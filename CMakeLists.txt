@@ -5,10 +5,10 @@ string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
-set(CMAKE_EXE_LINKER_FLAGS "-static")
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(version)
-include(compiler_options)
 include(project_options)
 include(dependencies)
 
