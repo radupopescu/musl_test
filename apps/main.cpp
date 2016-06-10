@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
  * This file is part of the musl_test project:
- *     https://github.com/radupopescu/must_test
+ *     https://github.com/radupopescu/musl_test
  */
 
 #include "musl_test_config.h"
