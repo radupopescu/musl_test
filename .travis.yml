@@ -1,0 +1,32 @@
+sudo: false
+
+language: cpp
+
+addons:
+    apt:
+        sources:
+            - llvm-toolchain-precise-3.7
+            - ubuntu-toolchain-r-test
+        packages:
+            - clang-3.7
+            - gcc-5
+            - g++-5
+
+compiler:
+  - gcc
+  - clang
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+
+before_script:
+    - "mkdir ${TRAVIS_BUILD_DIR}/build-{debug,opt}"
+
+install:
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+
+script: ./travis_build.sh
+

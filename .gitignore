@@ -1,0 +1,7 @@
+TAGS
+GTAGS
+GPATH
+GRPATH
+build-*
+*.swp
+*.pyc

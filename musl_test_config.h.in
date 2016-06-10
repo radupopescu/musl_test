@@ -1,0 +1,15 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file is part of the musl_test project:
+ *     https://github.com/radupopescu/must_test
+ */
+
+#pragma once
+
+#define musl_test_VERSION_MAJOR @musl_test_VERSION_MAJOR@
+#define musl_test_VERSION_MINOR @musl_test_VERSION_MINOR@
+#define musl_test_VERSION_MICRO @musl_test_VERSION_MICRO@
+#define musl_test_VERSION_STRING "@musl_test_VERSION_MAJOR@.@musl_test_VERSION_MINOR@.@musl_test_VERSION_MICRO@"

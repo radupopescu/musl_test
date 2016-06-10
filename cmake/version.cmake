@@ -1,0 +1,10 @@
+set(${PROJECT_NAME}_VERSION_MAJOR 0)
+set(${PROJECT_NAME}_VERSION_MINOR 0)
+set(${PROJECT_NAME}_VERSION_MICRO 1)
+
+configure_file (
+    "${PROJECT_SOURCE_DIR}/${PROJECT_NAME_LOWER}_config.h.in"
+    "${PROJECT_BINARY_DIR}/${PROJECT_NAME_LOWER}_config.h"
+)
+
+include_directories(${PROJECT_BINARY_DIR})
