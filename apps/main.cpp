@@ -12,13 +12,32 @@
 #include <dummy.h>
 
 #include <iostream>
+#include <future>
+#include <thread>
 
 int main()
 {
+  // C++11 std::thread
+  auto t1 = std::thread([] {
     std::cout << "musl_test version: " << musl_test_VERSION_STRING << std::endl;
+  });
 
-    musl_test::Dummy d;
-    int var = d.Var();
+  t1.join();
 
-    return 0;
+
+  const auto n = 1;
+
+  // C++14 generic lambda
+  auto f = [n] (auto i) {
+    return n + i;
+  };
+
+  std::cout << "f(1) = " << f(1) << std::endl;
+
+  // C++11 std::async
+  auto result = std::async(f, 2);
+
+  std::cout << "f(2) = " << result.get() << std::endl;
+
+  return 0;
 }
