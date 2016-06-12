@@ -15,6 +15,10 @@
 #include <future>
 #include <thread>
 
+#include <dlfcn.h>
+
+typedef void(*PluginFunction)(void);
+
 int main()
 {
   // C++11 std::thread
@@ -38,6 +42,21 @@ int main()
   auto result = std::async(f, 2);
 
   std::cout << "f(2) = " << result.get() << std::endl;
+
+  // Use a plugin
+  void* myPlugin = dlopen("libmusl_test_plugin.so", RTLD_LAZY);
+  if (myPlugin == nullptr) {
+    std::cerr << "Error loading plugin." << std::endl;
+  } else {
+    void* myPluginFun = dlsym(myPlugin, "sayHello");
+    if (myPluginFun == nullptr) {
+      std::cerr << "Error loading symbol from plugin." << std::endl;
+    } else {
+      PluginFunction f = (PluginFunction)myPluginFun;
+      f();
+      dlclose(myPlugin);
+    }
+  }
 
   return 0;
 }
